@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //Hello Mina
+#define SIZE 3
 int countCustomer =0;
 typedef struct NewNode{
     int reachTime;
@@ -11,7 +12,7 @@ typedef struct NewNode{
     struct NewNode *ptr;
 }Node;
 
-Node *front[3]={NULL,NULL,NULL},*rear[3]={NULL,NULL,NULL};
+Node *front[SIZE]={NULL,NULL,NULL},*rear[3]={NULL,NULL,NULL};
 
 void enquque(char i,int RTime,int TTime)
 {
@@ -22,11 +23,13 @@ void enquque(char i,int RTime,int TTime)
     {
         front[i]=node;
         rear[i]=node;
+        node->waitingTime=0;
         node->ptr=NULL;
         countCustomer++;
     }
     else
     {
+        node->waitingTime=rear[i]->waitingTime+rear[i]->reachTime+rear[i]->transTime-node->reachTime;
         rear[i]->ptr=node;
         rear[i]=node;
         node->ptr=NULL;
@@ -50,7 +53,7 @@ void displayQueue(char i)
         printf("Display All Queue %d : ",i);
         while(dnode!=NULL)
         {
-            printf("RT= %d TT= %d ,",dnode->reachTime,dnode->transTime);
+            printf("RT= %d TT= %d WT= %d ,",dnode->reachTime,dnode->transTime,dnode->waitingTime);
             dnode=dnode->ptr;
         }
         printf("\n");
@@ -69,6 +72,16 @@ int calTransTime(char i)
         dnode=dnode->ptr;
     }
     return sum;
+}
+int calWaitingTime(char i)
+{
+    Node* dnode=front[i];
+    int sumwaiting=0;
+    while(dnode!=NULL){
+        sumwaiting=sumwaiting+dnode->waitingTime;
+        dnode=dnode->ptr;
+    }
+    return sumwaiting;
 }
 void enterCustomer(int reachTime ,int transTime)
 {

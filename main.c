@@ -1,9 +1,10 @@
 #include"queueDeclare.h"
 int main(){
     int transTime=0,reachTime=0;
-    int ch=0;
+    int ch=0,j=0;
     do{
-        printf("Enter 1 : Enter Customer  \nEnter 2 Display All Queue \nEnter 0 : Exit\nEnter Number to Choose :");
+        printf("Enter 1 : Enter Customer  \nEnter 2 Display All Queue \nEnter 0 : Exit");
+        printf("\nEnter 3 : Clear All Queue\nEnter Number to Choose :");
         scanf("%d",&ch);
         switch(ch)
         {
@@ -19,11 +20,19 @@ int main(){
                         displayQueue(1);
                         displayQueue(2);
                         break;
+                case 3:
+                    for(j=0; j<SIZE; j++){
+                        front[j]=NULL;
+                        rear[j]=NULL;
+                    }
+
 
         }
 
     }while(ch);
     printf("\nCounter Customer = %d",countCustomer);
+    printf("\nTrans Time = %d , waitingTime= %d,",calTransTime(0),calWaitingTime(0));
+
     /*enquque(0,2,20);
     enquque(0,2,10);
     enquque(0,1,3);
