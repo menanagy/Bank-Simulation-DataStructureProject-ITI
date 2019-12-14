@@ -6,6 +6,7 @@ int countCustomer =0;
 typedef struct NewNode{
     int reachTime;
     int transTime;
+    int waitingTime;
     struct NewNode *ptr;
 }Node;
 
