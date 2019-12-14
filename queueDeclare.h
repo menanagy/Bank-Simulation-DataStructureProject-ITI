@@ -2,6 +2,7 @@
 #define QUEUEDECLARE_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
+//Hello Mina
 int countCustomer =0;
 typedef struct NewNode{
     int reachTime;
