@@ -1,12 +1,15 @@
 # depslib dependency file v1.0
-1576321843 source:e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\main.c
+1576427118 source:e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\main.c
 	"queueDeclare.h"
 
 1576245376 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedefine.h
 	<stdio.h>
 	<stdlib.h>
 
-1576330485 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedeclare.h
+1576429964 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedeclare.h
+	"linkedList.h"
+
+1576430290 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\linkedlist.h
 	<stdio.h>
 	<stdlib.h>
 

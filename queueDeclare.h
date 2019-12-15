@@ -1,8 +1,9 @@
 #ifndef QUEUEDECLARE_H_INCLUDED
 #define QUEUEDECLARE_H_INCLUDED
-#include <stdio.h>
-#include <stdlib.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 //Hello Mina
+#include"linkedList.h"
 #define SIZE 3
 int countCustomer =0;
 typedef struct NewNode{
@@ -12,7 +13,7 @@ typedef struct NewNode{
     struct NewNode *ptr;
 }Node;
 
-Node *front[SIZE]={NULL,NULL,NULL},*rear[3]={NULL,NULL,NULL};
+Node *front[SIZE]={NULL,NULL,NULL},*rear[SIZE]={NULL,NULL,NULL};
 
 void enquque(char i,int RTime,int TTime)
 {

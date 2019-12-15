@@ -11,7 +11,7 @@ int main(){
                 case 1:
                         printf(" Enter Customer : Time Reach");
                         scanf("%d",&reachTime);
-                        printf(" Enter Customer : Time Transaction");
+                        printf("Enter Customer : Time Transaction");
                         scanf("%d",&transTime);
                         enterCustomer(reachTime,transTime);
                         break;
