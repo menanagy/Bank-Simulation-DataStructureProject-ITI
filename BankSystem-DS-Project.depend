@@ -1,15 +1,46 @@
 # depslib dependency file v1.0
-1576427118 source:e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\main.c
+1576617200 source:e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\main.c
 	"queueDeclare.h"
 
 1576245376 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedefine.h
 	<stdio.h>
 	<stdlib.h>
 
-1576429964 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedeclare.h
+1576617735 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\queuedeclare.h
 	"linkedList.h"
 
-1576430290 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\linkedlist.h
+1576617090 e:\iti intake 40\6-datastructure\project datastructure(bank system)\banksystem-ds-project\linkedlist.h
+	<stdio.h>
+	<stdlib.h>
+
+1576731928 source:c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\main.c
+	"linkedList_mina.h"
+	"queue_mina.h"
+
+1576726373 c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\queuedeclare.h
+	<stdio.h>
+	<stdlib.h>
+
+1576726529 c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\linkedlist.h
+	<stdio.h>
+	<stdlib.h>
+
+1576726288 source:c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\linkedlist.c
+	"linkedList.h"
+
+1576725530 source:c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\queue.c
+
+1576726788 source:c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\linkedlist_mina.c
+	"linkedList_Mina.h"
+
+1576727414 c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\linkedlist_mina.h
+	<stdio.h>
+	<stdlib.h>
+
+1576732287 source:c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\queue_mina.c
+	"queue_mina.h"
+
+1576731904 c:\users\minanagy\desktop\project datastructure(bank system)\banksystem-ds-project\queue_mina.h
 	<stdio.h>
 	<stdlib.h>
 

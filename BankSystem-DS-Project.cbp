@@ -31,12 +31,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="linkedList.h" />
+		<Unit filename="Linkedlist_Mina.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Queue_Mina.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="linkedList_Mina.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="queueDeclare.h" />
+		<Unit filename="main_Start.h" />
 		<Unit filename="queueDefine.h" />
+		<Unit filename="queue_mina.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
