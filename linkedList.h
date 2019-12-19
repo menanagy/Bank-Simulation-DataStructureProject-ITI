@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef  struct linkedList{
+typedef  struct linkedList
+{
 int reachTime;
 int transactionTime;
 struct linkedList *next,*prev;
 }linkedList;
+
 linkedList *first=NULL,*last=NULL;
-linkedList* _create(int arrivalTime,int transTime)
+
+linkedList* linkedList_Create(int arrivalTime,int transTime)
 {
     linkedList* newlinkedList=(linkedList *)malloc(sizeof(linkedList));
     newlinkedList->reachTime=arrivalTime;
@@ -14,7 +17,8 @@ linkedList* _create(int arrivalTime,int transTime)
     newlinkedList->next=newlinkedList->prev=NULL;
     return newlinkedList;
 }
-void _add(linkedList* newlinkedList)
+
+void linkedList_Add(linkedList* newlinkedList)
 {
     if(first==NULL){//==>First Element
             first=last=newlinkedList;
@@ -27,31 +31,46 @@ void _add(linkedList* newlinkedList)
             newlinkedList->next=NULL;//My Extra Code
     }
 }
-void _display(){
+
+void linkedList_Display(){
 linkedList *pdisplay=first;
 int i=0;
     while(pdisplay != NULL)
     {
-        printf("Display Data %d: Arrival Time= %d , Reach Time %d\n",i,pdisplay->reachTime,pdisplay->transactionTime);
+        printf("Display Data %d: Arrival Time= %d , Reach Time %d \n",i,pdisplay->reachTime,pdisplay->transactionTime);
         pdisplay=pdisplay->next;
         i++;
     }
 }
 
-void _insertAfter(linkedList *pafter,linkedList* pnewlinkedList)
+void linkedList_InsertQueue(){
+linkedList *pdisplay=first;
+dequque(0);
+dequque(1);
+dequque(2);
+    while(pdisplay != NULL )
+    {
+            enterCustomer(pdisplay->reachTime,pdisplay->transactionTime);
+            pdisplay=pdisplay->next;
+    }
+}
+
+void linkedList_InsertAfter(linkedList *pafter,linkedList* pnewlinkedList)
 {
-    if(pafter==last){
-        _add(pnewlinkedList);
+    if(pafter==last)
+    {
+        linkedList_Add(pnewlinkedList);
     }
     else
-        {
+    {
         pnewlinkedList->prev=pafter;
         pnewlinkedList->next=pafter->next;
         pafter->next->prev=pnewlinkedList;
         pafter->next=pnewlinkedList;
     }
 }
-linkedList* _remove(linkedList *pdelete){
+
+linkedList* linkedList_Remove(linkedList *pdelete){
 if(pdelete==first)
     {
         if(pdelete==last)
@@ -77,33 +96,35 @@ if(pdelete==first)
     pdelete->next=pdelete->prev=NULL;
     return pdelete;
 }
-void _swap(linkedList *n1,linkedList *n2){
-    linkedList * ptr=_remove(n1);
-    _insertAfter(n2,ptr);
+
+void linkedList_Swap(linkedList *n1,linkedList *n2){
+    linkedList * ptr=linkedList_Remove(n1);
+    linkedList_InsertAfter(n2,ptr);
 }
-void bubbleSort()
+
+void linkedList_BubbleSort()
 {    int sorted=0;
-    linkedList *ptr1=first;
+    linkedList *ptr1;
+    //linkedList *lptr = NULL;
+
     /* Checking for empty list */
+    if(first==NULL){return ;}
     do
     {
         sorted=1;
         ptr1=first;
-        while(first->next!=NULL)
+        while(ptr1->next!=NULL)
         {
-
-            if(first->reachTime > first->next->reachTime)
+            if(ptr1->reachTime > ptr1->next->reachTime)
             {
-                _swap(first, first->next);
-                //printf("%d  %d\n",first->data.id,first->Next->data.id);
+                linkedList_Swap(ptr1, ptr1->next);
                 sorted=0;
-
-
             }
             else
             {
-                first=first->next;
+                ptr1=ptr1->next;
             }
+
         }
 
     }

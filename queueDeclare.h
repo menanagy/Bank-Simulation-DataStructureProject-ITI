@@ -1,15 +1,14 @@
 #ifndef QUEUEDECLARE_H_INCLUDED
 #define QUEUEDECLARE_H_INCLUDED
-//#include <stdio.h>
-//#include <stdlib.h>
-//Hello Mina
 #include"linkedList.h"
 #define SIZE 3
 int countCustomer =0;
 typedef struct NewNode{
     int reachTime;
     int transTime;
+    int endTime;
     int waitingTime;
+    int startTime;
     struct NewNode *ptr;
 }Node;
 
@@ -20,31 +19,40 @@ void enquque(char i,int RTime,int TTime)
     Node *node=(Node *)malloc (sizeof(Node));
     node->reachTime=RTime;
     node->transTime=TTime;
+    node->endTime=RTime+TTime;
     if(front[i]==NULL)
     {
         front[i]=node;
         rear[i]=node;
         node->waitingTime=0;
+        node->startTime=node->reachTime+node->waitingTime;
         node->ptr=NULL;
         countCustomer++;
     }
     else
     {
-        node->waitingTime=rear[i]->waitingTime+rear[i]->reachTime+rear[i]->transTime-node->reachTime;
+        node->waitingTime=rear[i]->endTime-node->reachTime;
+        if(node->waitingTime<0){node->waitingTime=0;}
+        node->endTime+=node->waitingTime;
+        node->startTime=node->reachTime+node->waitingTime;
         rear[i]->ptr=node;
         rear[i]=node;
         node->ptr=NULL;
         countCustomer++;
     }
 }
-void dequque(char i,int *RTime,int *TTime)
+void dequque(char i)
 {
-        Node *pnode=front[i];
-        *RTime=front[i]->reachTime;
-        *TTime=front[i]->transTime;
-        front[i]=front[i]->ptr;
-        free(pnode);
+        while(front[i]!=NULL)
+        {
+                Node *pnode=front[i];
+                //*RTime=front[i]->reachTime;
+                //*TTime=front[i]->transTime;
+                front[i]=front[i]->ptr;
+                free(pnode);
+        }
 }
+
 void displayQueue(char i)
 {
     if(front[i]!=NULL)
@@ -52,9 +60,12 @@ void displayQueue(char i)
         Node* dnode=front[i];
         printf("______________________________________________________\n");
         printf("Display All Queue %d : ",i);
+        printf("\nStart\tend\twait\tTotalWaiting\tAverageWaiting\n");
         while(dnode!=NULL)
         {
-            printf("RT= %d TT= %d WT= %d ,",dnode->reachTime,dnode->transTime,dnode->waitingTime);
+            printf(" %d\t %d\t %d\n",dnode->startTime,dnode->endTime,dnode->waitingTime);
+            printf(" %d\t %d\t %d\n",totalWaitingTime(),(totalWaitingTime()/countCustomer),dnode->waitingTime);
+
             dnode=dnode->ptr;
         }
         printf("\n");
@@ -64,7 +75,7 @@ void displayQueue(char i)
         printf("\n Sorry this Queue is Empty : ");
     }
 }
-int calTransTime(char i)
+int totalTransTime(char i)
 {
     Node* dnode=front[i];
     int sum=0;
@@ -74,7 +85,7 @@ int calTransTime(char i)
     }
     return sum;
 }
-int calWaitingTime(char i)
+int totalWaitingTime(char i)
 {
     Node* dnode=front[i];
     int sumwaiting=0;
@@ -87,16 +98,33 @@ int calWaitingTime(char i)
 void enterCustomer(int reachTime ,int transTime)
 {
     if(front[0]!=NULL&&front[1]!=NULL&&front[2]!=NULL)
+    {
+            //endTimeCurrent=rear->reachTime;
+            if(rear[0]->endTime<rear[1]->endTime&&rear[0]->endTime<rear[2]->endTime)
             {
-                 if (calTransTime(0) <= calTransTime(1) && calTransTime(0) <= calTransTime(2)){
+                enquque(0,reachTime,transTime);
+            }
+            else if(rear[1]->endTime<rear[0]->endTime&&rear[1]->endTime<rear[2]->endTime)
+            {
+                enquque(1,reachTime,transTime);
+            }
+            else if(rear[2]->endTime<rear[0]->endTime&&rear[2]->endTime<rear[1]->endTime)
+            {
+                enquque(2,reachTime,transTime);
+            }
+
+                /*int x=calWaitingTime(0)-reachTime;
+                int y=calWaitingTime(1)-reachTime;
+                int z=calWaitingTime(2)-reachTime;
+                 if ( x<=y  && x <= z){
                     enquque(0,reachTime,transTime);
                  }
-                 else if (calTransTime(1) <= calTransTime(0) && calTransTime(1) <= calTransTime(2)){
+                 else if (y<=x&&y<=z){
                     enquque(1,reachTime,transTime);
                  }
                  else{
                     enquque(2,reachTime,transTime);
-                 }
+                 }*/
             }
             else
             {
@@ -106,11 +134,10 @@ void enterCustomer(int reachTime ,int transTime)
                 else if(front[1]==NULL){
                     enquque(1,reachTime,transTime);
                 }
-                else if(front[2]==NULL){
+                else if(front[2]==NULL)
+                {
                     enquque(2,reachTime,transTime);
                 }
-
-
             }
 }
 /*void enquque2(int RTime,int TTime)
